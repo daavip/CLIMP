@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,40 +23,30 @@ class BaseModel(models.Model):
         
     def __str__(self):
         return f"{self.__class__.__name__} {self.id}"
-   
+
 class Machine(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
-    
-# User
-# -email
-# -password
-# -id_role
+    serial = models.CharField(max_length=5, null=False, blank=False)
+    active = models.BooleanField(default=False)
 
+class Defect(BaseModel):
+    name = models.CharField(max_length=50, null=False, blank=False)
 
-# Role
-# -name
+class Sector(BaseModel):
+    name = models.CharField(max_length=50, null=False, blank=False)
 
+class Call(BaseModel):
+    defect = models.ForeignKey(Defect, on_delete=models.CASCADE)
+    machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    open = models.BooleanField(default=False)
 
-# Machine
-# -id_defect
-# -name
-# -serial
-# -active
-
-
-# Routine
-# -id_user
-# -id_machine
-# -worked_hours
-# -start_date
-# -end_date
-# -running
-# -area
-
-
-# Defect
-# -id_machine
-# -name
-# -open
-# -start_date
-# -end_date
+class Routine(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
+    worked_hours = models.IntegerField(default=0)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    running = models.BooleanField(default=False)
+    area = models.IntegerField(default=0)
