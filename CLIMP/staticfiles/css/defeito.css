@@ -1,0 +1,25 @@
+.sessao-info{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 40px 0;
+}
+
+.card-info {
+    width: calc(25% - 20px);
+    height: 150px;
+    border-radius: 10px;
+    background-color: #2d2e30;
+    color: #9fe767;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #9fe767;
+}
+
+.card-info h4 {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
