@@ -87,20 +87,22 @@
         <tr>
           <th>Nome do Aparelho</th>
           <th>Serial</th>
-          <th>Ativo</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Aparelho 1</td>
-          <td>SETOR A</td>
-          <td>
-            <label class="switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </td>
-        </tr>
+        {% for machine in machines %}
+          <tr>
+            <td>{{ machine.name }}</td>
+            <td>{{ machine.serial }}</td>
+            <td>
+              <label class="switch">
+                <input type="checkbox" {% if machine.status %}checked{% endif %}>
+                <span class="slider"></span>
+              </label>
+            </td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
   </main>

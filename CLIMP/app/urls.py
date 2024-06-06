@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-
+    path('home/', home, name='home'),
 ]
 
 if settings.DEBUG:

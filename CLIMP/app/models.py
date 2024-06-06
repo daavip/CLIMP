@@ -27,7 +27,7 @@ class BaseModel(models.Model):
 class Machine(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
     serial = models.CharField(max_length=5, null=False, blank=False)
-    active = models.BooleanField(default=False)
+    status = models.BooleanField(default=False)
 
 class Defect(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)

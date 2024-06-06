@@ -10,8 +10,8 @@ class BaseModelAdmin(admin.ModelAdmin):
     get_user.short_description = 'User'
 
 class MachineAdmin(BaseModelAdmin):
-    list_display = ("id", "name", "serial", "active", "created_at", "updated_at",)
-
+    list_display = ("id", "name", "serial", "status", "created_at", "updated_at",)
+    
 admin.site.register(Machine, MachineAdmin)
 
 class DefectAdmin(BaseModelAdmin):

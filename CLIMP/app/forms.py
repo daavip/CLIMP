@@ -4,11 +4,11 @@ from .models import *
 class MachineForm(forms.ModelForm):
     class Meta:
         model = Machine
-        fields = ['name', 'serial', 'active']
+        fields = ['name', 'serial', 'status']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'serial': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 5, 'pattern': '\d*'}),
-            'active': forms.HiddenInput(attrs={'value': 'true'}),
+            'status': forms.HiddenInput(attrs={'value': 'true'}),
         }
 
 # class DefectForm(forms.ModelForm):
