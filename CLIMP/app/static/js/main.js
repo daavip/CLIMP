@@ -61,19 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
   form.onsubmit = function (event) {
     event.preventDefault();
 
-    const nomeAparelho = document.getElementById("nome-aparelho").value;
-    const setor = document.getElementById("setor").value;
-    const operador = document.getElementById("operador").value;
+    const name = document.getElementById("name").value;
+    const serial = document.getElementById("serial").value;
+    const active = document.getElementById("active").value;
 
     const newRow = table.insertRow();
     newRow.innerHTML = `
-      <td>${nomeAparelho}</td>
-      <td>${operador}</td>
-      <td>${setor}</td>
-      <td data-start-time="${new Date().toISOString()}">Calculando...</td>
+      <td>${name}</td>
+      <td>${serial}</td>
       <td>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" checked>
           <span class="slider"></span>
         </label>
       </td>

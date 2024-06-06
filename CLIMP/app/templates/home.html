@@ -62,20 +62,18 @@
       <div class="modal-content">
         <span class="close-btn">&times;</span>
         <h2>Criar Nova Máquina</h2>
-        <form id="criar-maquina-form">
+        <form id="criar-maquina-form" method="post" action="{% url 'home' %}">
+          {% csrf_token %}
           <div class="form-group">
-            <label for="nome-aparelho">Nome do Aparelho:</label>
-            <input type="text" id="nome-aparelho" name="nome-aparelho" required>
+            <label for="name" class="form-label">Nome do Aparelho:</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ form.name.value }}" required>
           </div>
           <div class="form-group">
-            <label for="operador">Operador:</label>
-            <input type="text" id="operador" name="operador" required>
+            <label for="serial" class="form-label">Serial:</label>
+            <input type="text" id="serial" name="serial" maxlength="5" class="form-control" value="{{ form.serial.value }}" required>
           </div>
-          <div class="form-group">
-            <label for="setor">Setor:</label>
-            <input type="text" id="setor" name="setor" required>
-          </div>
-          <button type="submit">Confirmar</button>
+          <input type="hidden" id="active" name="active" value="true">
+          <button type="submit" class="btn btn-primary">Confirmar</button>
         </form>
       </div>
     </div>
@@ -88,21 +86,17 @@
       <thead>
         <tr>
           <th>Nome do Aparelho</th>
-          <th>Operador</th>
-          <th>Setor</th>
-          <th>Tempo de Funcionamento</th>
-          <th>Desativada</th>
+          <th>Serial</th>
+          <th>Ativo</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Aparelho 1</td>
-          <td>Davi Silva</td>
           <td>SETOR A</td>
-          <td data-start-time="2023-06-1T02:30:00">Calculando...</td>
           <td>
             <label class="switch">
-              <input type="checkbox">
+              <input type="checkbox" checked>
               <span class="slider"></span>
             </label>
           </td>
