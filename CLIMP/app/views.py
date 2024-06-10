@@ -1,24 +1,24 @@
 from django.shortcuts import render, redirect 
 from .forms import *
-
-# Create your views here.
-
+from django.http import HttpResponse
 
 def home(request):
-    if request.method == 'POST':
-        form = MachineForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        
-    else:
-        form = MachineForm()
-    
-    machines = Machine.objects.all()
-    return render(request, 'home.html', {'form' : form, 'machines' : machines})
+  if request.method == 'POST':
+    form = MachineForm(request.POST)
+    if form.is_valid():
+      print(form.cleaned_data)  # Imprime os dados validados do formulário
+      form.save()
+      return redirect('home')
+  else:
+    form = MachineForm()
+  machines = Machine.objects.all()
+  return render(request, 'home.html', {'form' : form, 'machines' : machines})
 
 def dash(request):
     return render(request, 'dash.html')
 
 def defeito(request):
     return render(request, 'defeito.html')
+
+def config(request):
+   return render(request, 'config.html')

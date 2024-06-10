@@ -47,7 +47,6 @@ ul {
 }
 
 .item-menu {
-    margin-right: 10px;
     border-radius: 20px;
     border: 1px solid transparent;
     transition: 0.3s;
@@ -62,7 +61,6 @@ ul {
     padding: 10px 1%;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
     transition: 0.3s;
 }
 

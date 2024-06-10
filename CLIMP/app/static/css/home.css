@@ -188,3 +188,65 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #45a049;
 }
+
+.edit-btn, .delete-btn {
+  background-color: #2d2e30;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  background-color: #9fe767;
+  color: #2d2e30;
+}
+
+#confirm-delete-modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1050; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding-top: 100px;
+}
+
+.confirm-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px; /* Largura do modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+#confirm-delete-btn, #cancel-delete-btn {
+  background-color: #9fe767;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+}
+
+#confirm-delete-btn:hover, #cancel-delete-btn:hover {
+  background-color: #45a049;
+}
+
+#cancel-delete-btn {
+  background-color: #dc3545;
+}
+
+#cancel-delete-btn:hover {
+  background-color: #c82333;
+}
