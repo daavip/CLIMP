@@ -15,15 +15,16 @@ class BaseModel(models.Model):
     def __str__(self):
         return f"{self.__class__.__name__} {self.id}"
 
+class Sector(BaseModel):
+    name = models.CharField(max_length=50, null=False, blank=False)
+
 class Machine(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
     serial = models.IntegerField(max_length=5, null=False, blank=False)
     status = models.BooleanField(default=False)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE, null=True, blank=True)
 
 class Defect(BaseModel):
-    name = models.CharField(max_length=50, null=False, blank=False)
-
-class Sector(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
 
 class Call(BaseModel):

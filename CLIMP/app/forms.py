@@ -19,10 +19,10 @@ class DefectForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-# class SectorForm(forms.ModelForm):
-#     class Meta:
-#         model = Sector
-#         fields = ['name']
+class SectorForm(forms.ModelForm):
+    class Meta:
+        model = Sector
+        fields = ['name']
 
 # class CallForm(forms.ModelForm):
 #     class Meta:
@@ -30,7 +30,7 @@ class DefectForm(forms.ModelForm):
 #         fields = ['defect', 'machine', 'start_date', 'end_date', 'open']
 
 
-# class RoutineForm(forms.ModelForm):
-#     class Meta:
-#         model = Routine
-#         fields = ['user', 'machine', 'worded_hours', 'start_date', 'end_date', 'running', 'area']
+class RoutineForm(forms.ModelForm):
+    class Meta:
+        model = Routine
+        fields = ['user', 'machine', 'worked_hours', 'start_date', 'end_date', 'running', 'area']
