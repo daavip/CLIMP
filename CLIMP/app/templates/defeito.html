@@ -59,6 +59,22 @@
   <main>
     <div class="menu-titulo">
       <h2>Máquinas com Defeito</h2>
+      <button id="criar-defeito-btn">Criar Defeito</button>
+    </div>
+
+    <div id="modal-defeito" class="modal-defeito">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Criar Novo Defeito</h2>
+        <form id="criar-defeito-form" method="post" action="{% url 'defeito' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label form="name" class="form-label">Nome do Aparelho:</label>
+            <input type="text" id="id_name" name="name" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Confirmar</button>
+        </form>
+      </div>
     </div>
 
     <div class="sessao-info">
@@ -76,7 +92,7 @@
       </div>
     </div>
 
-    <div class="menu-titulo">
+    <!-- <div class="menu-titulo">
       <h2>Problemas</h2>
     </div>
 
@@ -96,8 +112,41 @@
         </tr>
       </tbody>
     </table>
-  </main>
+  </main> -->
+  <nav class="menu-titulo">
+    <h1>Problemas</h1>
+    <button id="criar-chamados-btn">Criar Chamado</button>
+  </nav>
+  <table id="aparelhos-table">
+    <thead>
+      <tr>
+        <th>Máquina</th>
+        <th>Defeito</th>
+        <th>Início</th>
+        <th>Fim</th>
+        <th>Aberto</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for machine in machines %}
+        <tr>
+          <td>{{ call.machine.name }}</td>
+          <td>{{ call.defect.name }}</td>
+          <td>{{ call.start_date }}</td>
+          <td>{{ call.end_date }}</td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" {% if call.open %}checked{% endif %}>
+              <span class="slider"></span>
+            </label>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/side-bar.js' %}"></script>
+
 </body>
 
 </html>

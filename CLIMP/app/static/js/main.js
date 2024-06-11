@@ -47,55 +47,55 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('criar-maquina-btn').onclick = () => modal.style.display = 'block';
   span.onclick = () => modal.style.display = 'none';
 
-  document.getElementById('criar-maquina-form').onsubmit = event => {
-    event.preventDefault();
-    addOrUpdateRow();
-  };
+  // document.getElementById('criar-maquina-form').onsubmit = event => {
+  //   event.preventDefault();
+  //   // addOrUpdateRow();
+  // };
 
-  function addOrUpdateRow(editingRow = null) {
-    const name = document.getElementById("name").value;
-    const serial = document.getElementById("serial").value;
-    const active = document.getElementById("active").value;
-    const startTime = new Date().toISOString();
+//   function addOrUpdateRow(editingRow = null) {
+//     const name = document.getElementById("name").value;
+//     const serial = document.getElementById("serial").value;
+//     const active = document.getElementById("active").value;
+//     const startTime = new Date().toISOString();
 
-    if (editingRow) {
-      editingRow.cells[0].textContent = nomeAparelho;
-      editingRow.cells[1].textContent = operador;
-      editingRow.cells[2].textContent = setor;
-      editingRow.cells[3].setAttribute('data-start-time', startTime);
-    } else {
-      const newRow = table.insertRow();
-      newRow.innerHTML = `
-        <td>${nomeAparelho}</td>
-        <td>${operador}</td>
-        <td>${setor}</td>
-        <td data-start-time="${startTime}">Calculando...</td>
-        <td>
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-          </label>
-        </td>
-        <td><button class="edit-btn">Editar</button></td>
-        <td><button class="delete-btn">Deletar</button></td>
-      `;
-      newRow.querySelector('.edit-btn').addEventListener('click', () => editRow(newRow));
-      newRow.querySelector('.delete-btn').addEventListener('click', () => showDeleteConfirmation(newRow));
-    }
+//     if (editingRow) {
+//       editingRow.cells[0].textContent = nomeAparelho;
+//       editingRow.cells[1].textContent = operador;
+//       editingRow.cells[2].textContent = setor;
+//       editingRow.cells[3].setAttribute('data-start-time', startTime);
+//     } else {
+//       const newRow = table.insertRow();
+//       newRow.innerHTML = `
+//         <td>${nomeAparelho}</td>
+//         <td>${operador}</td>
+//         <td>${setor}</td>
+//         <td data-start-time="${startTime}">Calculando...</td>
+//         <td>
+//           <label class="switch">
+//             <input type="checkbox">
+//             <span class="slider"></span>
+//           </label>
+//         </td>
+//         <td><button class="edit-btn">Editar</button></td>
+//         <td><button class="delete-btn">Deletar</button></td>
+//       `;
+//       newRow.querySelector('.edit-btn').addEventListener('click', () => editRow(newRow));
+//       newRow.querySelector('.delete-btn').addEventListener('click', () => showDeleteConfirmation(newRow));
+//     }
 
-    modal.style.display = 'none';
-    document.getElementById('criar-maquina-form').reset();
-  }
+//     modal.style.display = 'none';
+//     document.getElementById('criar-maquina-form').reset();
+//   }
 
-  function editRow(row) {
-    document.getElementById("nome-aparelho").value = row.cells[0].innerText;
-    document.getElementById("operador").value = row.cells[1].innerText;
-    document.getElementById("setor").value = row.cells[2].innerText;
-    modal.style.display = 'block';
+//   function editRow(row) {
+//     document.getElementById("nome-aparelho").value = row.cells[0].innerText;
+//     document.getElementById("operador").value = row.cells[1].innerText;
+//     document.getElementById("setor").value = row.cells[2].innerText;
+//     modal.style.display = 'block';
 
-    document.getElementById('criar-maquina-form').onsubmit = event => {
-      event.preventDefault();
-      addOrUpdateRow(row);
-    };
-  }
+//     document.getElementById('criar-maquina-form').onsubmit = event => {
+//       event.preventDefault();
+//       addOrUpdateRow(row);
+//     };
+//   }
 });

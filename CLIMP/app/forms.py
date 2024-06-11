@@ -8,13 +8,16 @@ class MachineForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'serial': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 5, 'pattern': '\d*'}),
-            'status': forms.HiddenInput(attrs={'value': 'true'}),
+            'status': forms.HiddenInput(attrs={}),
         }
 
-# class DefectForm(forms.ModelForm):
-#     class Meta:
-#         model = Defect
-#         fields = ['name']
+class DefectForm(forms.ModelForm):
+    class Meta:
+        model = Defect
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 # class SectorForm(forms.ModelForm):
 #     class Meta:
