@@ -19,6 +19,7 @@ class Machine(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
     serial = models.IntegerField(max_length=5, null=False, blank=False)
     status = models.BooleanField(default=False)
+    battery_level = models.IntegerField(default=0)
 
 class Defect(BaseModel):
     name = models.CharField(max_length=50, null=False, blank=False)
@@ -36,6 +37,7 @@ class Call(BaseModel):
 class Routine(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     worked_hours = models.IntegerField(default=0)
     start_date = models.DateField(null=False, blank=False)
     end_date = models.DateField(null=True, blank=True)

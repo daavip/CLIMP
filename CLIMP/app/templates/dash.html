@@ -15,44 +15,60 @@
 <body>
   <header>
     <nav class="menu-lateral">
-      <div class="btn-expandir">
-        <i class="bi bi-list"></i>
-      </div>
-
-      <ul>
-        <li class="item-menu">
-          <a href="{% url 'home' %}">
-            <span class="icon"><i class="bi bi-house"></i></span>
-            <span class="txt-link">Home</span>
-          </a>
-        </li>
-        <li class="item-menu">
-          <a href="{% url 'dash' %}">
-            <span class="icon"><i class="bi bi-columns-gap"></i></span>
-            <span class="txt-link">Dashboard</span>
-          </a>
-        </li>
-        <li class="item-menu">
-          <a href="{% url 'defeito' %}">
-            <span class="icon"><i class="bi bi-exclamation-octagon"></i></span>
-            <span class="txt-link">Máquinas com Defeito</span>
-          </a>
-        </li>
-      </ul>
-
-      <div class="item-menu usuario">
-        <a href="/">
-          <span class="icon"><i class="bi bi-person-circle"></i></span>
-          <div class="name-office">
-            <span class="txt-link name">Douglas</span>
-            <span class="txt-link office">Professor</span>
-          </div>
-        </a>
-
-        <a href="/">
-          <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
-        </a>
-      </div>
+        <div class="btn-expandir">
+            <i class="bi bi-list"></i>
+            <h3>CLIMP</h3>
+        </div>
+        <ul>
+            <li class="item-menu">
+                <a href="{% url 'home' %}">
+                    <span class="icon"><i class="bi bi-cpu"></i></span>
+                    <span class="txt-link">Máquinas</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="{% url 'dash' %}">
+                    <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                    <span class="txt-link">Dashboard</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="{% url 'defeito' %}">
+                    <span class="icon"><i class="bi bi-exclamation-octagon"></i></span>
+                    <span class="txt-link">Defeitos</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="{% url 'chamados' %}">
+                    <span class="icon"><i class="bi bi-exclamation-octagon"></i></span>
+                    <span class="txt-link">Chamados</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="{% url 'setores' %}">
+                    <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                    <span class="txt-link">Setores</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="{% url 'rotinas' %}">
+                    <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                    <span class="txt-link">Rotinas</span>
+                </a>
+            </li>
+        </ul>
+        <div class="item-menu usuario">
+            <a href="{% url 'config' %}">
+                <span class="icon"><i class="bi bi-person-circle"></i></span>
+                <div class="name-office">
+                    <span class="txt-link name">admin</span>
+                    <span class="txt-link office">admin</span>
+                </div>
+            </a>
+            <!-- <a href="{ url 'logout' }"> -->
+                <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+            </a>
+        </div>
     </nav>
   </header>
 
@@ -64,15 +80,15 @@
     <div class="sessao-info">
       <div class="card-info">
         <h4>Máquinas Operando</h4>
-        <h4 id="maquinas-operando">0 / 10</h4>
+        <h4 id="maquinas-operando">{{ total_machines }}</h4>
       </div>
       <div class="card-info">
         <h4>Máquinas com Defeito</h4>
-        <h4 id="maquinas-defeito">0</h4>
+        <h4 id="maquinas-defeito">{{ total_defect }}</h4>
       </div>
       <div class="card-info">
         <h4>Total de Horas Usadas</h4>
-        <h4 id="total-horas-usadas">0h</h4>
+        <h4 id="total-horas-usadas">{{ total_hours }}</h4>
       </div>
       <div class="card-info">
         <h4>Horário de Trabalho</h4>
@@ -97,20 +113,17 @@
         </tr>
       </thead>
       <tbody>
+        {% for machine in machines %}
         <tr>
-          <td>Máquina 1</td>
-          <td>Operador 1</td>
-          <td>SETOR A</td>
+          <td></td>
+          <td>{{ machine.name }}</td>
+          <td>{{ machine.user }}</td>
+          <!-- <td>{{ machine.sector }}</td> -->
           <td data-start-time="2023-06-1T02:30:00">Calculando...</td>
-          <td>05/06/2024 20:30</td>
-          <td>05/06/2024 22:30</td>
-          <td>
-            <label class="switch">
-              <input type="checkbox" checked>
-              <span class="slider"></span>
-            </label>
-          </td>
+          <td>{{ machine.start_date }}</td>
+          <td>{{ machine.end_date }}</td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
 

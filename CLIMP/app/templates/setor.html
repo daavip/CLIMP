@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="{% static 'css/global.css' %}" />
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/defeito.css' %}">
+    <link rel="stylesheet" href="{% static 'css/setor.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>CLIMP - DEFEITOS</title>
+    <title>CLIMP - SETORES</title>
 </head>
 
 <body>
@@ -74,51 +74,37 @@
     
     <main>
         <div class="menu-titulo">
-            <h2>Defeitos</h2>
-            <button id="criar-defeito-btn">Criar Defeito</button>
+            <h2>Setores</h2>
+            <button id="criar-setor-btn">Criar Setores</button>
         </div>
-        <div id="modal-defeito" class="modal-defeito">
+        <div id="modal-setor" class="modal-setor">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
-                <h2>Criar Novo Defeito</h2>
-                <form id="criar-defeito-form" method="post" action="{% url 'create_defect' %}">
+                <h2>Criar Novo Setor</h2>
+                <form id="criar-setor-form" method="post" action="{% url 'create_sector' %}">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="name" class="form-label">Defeito:</label>
+                        <label for="name" class="form-label">Sector:</label>
                         <input type="text" id="id_name" name="name" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Confirmar</button>
                 </form>
             </div>
         </div>
-        <div class="sessao-info">
-            <div class="card-info">
-                <h4>Máquinas com Defeito</h4>
-                <h4 id="maquinas-defeito">0</h4>
-            </div>
-            <div class="card-info">
-                <h4>Chamados Abertos</h4>
-                <h4 id="chamados-abertos">0</h4>
-            </div>
-            <div class="card-info">
-                <h4>Chamados Resolvidos</h4>
-                <h4 id="chamados-resolvidos">0</h4>
-            </div>
-        </div>
-        <div class="tabela-maquinas">
-            <table id="maquinas-defeito-table">
+        <div class="tabela-setores">
+            <table id="setores-table">
                 <thead>
                     <tr>
-                        <th>Defeito</th>
-                        <th>Resolver</th>
+                        <th>Setor</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for defect in defects %}
+                    {% for sector in sectors %}
                     <tr>
-                        <td>{{ defect.name }}</td>
+                        <td>{{ sector.name }}</td>
                         <td>
-                            <button class="btn-resolver" data-id="{{ defect.id }}">Resolver</button>
+                            <button class="btn-excluir" data-id="{{ sector.id }}">Excluir</button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -126,7 +112,7 @@
             </table>
         </div>
     </main>
-    <script src="{% static 'js/defeito.js' %}"></script>
+    <script src="{% static 'js/setor.js' %}"></script>
     <script src="{% static 'js/side-bar.js' %}"></script>
 </body>
 

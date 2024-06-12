@@ -18,12 +18,11 @@
                 <i class="bi bi-list"></i>
                 <h3>CLIMP</h3>
             </div>
-
             <ul>
                 <li class="item-menu">
                     <a href="{% url 'home' %}">
                         <span class="icon"><i class="bi bi-cpu"></i></span>
-                        <span class="txt-link">Máquina</span>
+                        <span class="txt-link">Máquinas</span>
                     </a>
                 </li>
                 <li class="item-menu">
@@ -35,7 +34,25 @@
                 <li class="item-menu">
                     <a href="{% url 'defeito' %}">
                         <span class="icon"><i class="bi bi-exclamation-octagon"></i></span>
+                        <span class="txt-link">Defeitos</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="{% url 'chamados' %}">
+                        <span class="icon"><i class="bi bi-exclamation-octagon"></i></span>
                         <span class="txt-link">Chamados</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="{% url 'setores' %}">
+                        <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                        <span class="txt-link">Setores</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="{% url 'rotinas' %}">
+                        <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                        <span class="txt-link">Rotinas</span>
                     </a>
                 </li>
             </ul>
@@ -43,12 +60,11 @@
                 <a href="{% url 'config' %}">
                     <span class="icon"><i class="bi bi-person-circle"></i></span>
                     <div class="name-office">
-                        <span class="txt-link name">Douglas</span>
-                        <span class="txt-link office">Professor</span>
+                        <span class="txt-link name">admin</span>
+                        <span class="txt-link office">admin</span>
                     </div>
                 </a>
-
-                <a href="{% url 'config' %}">
+                <!-- <a href="{ url 'logout' }"> -->
                     <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
                 </a>
             </div>
